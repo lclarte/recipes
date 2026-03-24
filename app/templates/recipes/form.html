@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}New recipe{% endblock %}
+{% block content %}
+<h1>New recipe</h1>
+<form method="post" action="/recipes/new" enctype="multipart/form-data">
+  <label>Title *
+    <input type="text" name="title" required autofocus>
+  </label>
+  <label>Short description
+    <input type="text" name="description" placeholder="Optional one-liner">
+  </label>
+  <label>Ingredients *
+    <textarea name="ingredients" rows="8" required placeholder="200g pasta&#10;2 eggs&#10;..."></textarea>
+  </label>
+  <label>Instructions *
+    <textarea name="instructions" rows="10" required placeholder="1. Boil water&#10;2. ..."></textarea>
+  </label>
+  <label>Images
+    <input type="file" name="images" multiple accept="image/*">
+  </label>
+  <div class="form-actions">
+    <button type="submit">Save recipe</button>
+    <a href="/">Cancel</a>
+  </div>
+</form>
+{% endblock %}
