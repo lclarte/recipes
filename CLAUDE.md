@@ -1,66 +1,70 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
 ## Project
 
-Personal recipe website for two users. FastAPI backend with Jinja2 server-side templates and SQLite.
+Personal recipe website for Baru & Lulu. Jekyll static site hosted on GitHub Pages.
 
-## Commands
+## Stack
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+- **Jekyll** with GitHub Pages native build (no local build step required)
+- Recipes: Markdown files in `recipes/` with YAML frontmatter
+- Styles: `assets/css/style.css`
+- Images: `assets/images/recipes/<slug>/`
 
-# Create users (run before first login — there is no registration page)
-python create_user.py <username> <password>
+## Adding a recipe
 
-# Run dev server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+1. Create `recipes/my-dish.md` with this format:
 
-# Run in production (on VPS/Pi)
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+```markdown
+---
+title: My Dish
+description: Optional one-liner
+author: Baru
+date: 2026-04-14
+images:          # optional
+  - photo.jpg
+---
+
+## Ingredients
+
+- item 1
+- item 2
+
+## Instructions
+
+1. Step one
+2. Step two
 ```
 
-## Setup
+2. If the recipe has photos, add them to `assets/images/recipes/my-dish/`
+3. `git add . && git commit -m "add my-dish" && git push`
+4. GitHub Pages builds and deploys in ~30 seconds
 
-1. Copy `.env.example` to `.env` and set `SECRET_KEY` (generate with `python -c "import secrets; print(secrets.token_hex(32))"`)
-2. `alembic upgrade head` to create/migrate the DB
-3. Create both users with `create_user.py`
+Or use GitHub's web editor (no local git needed).
 
-## Database migrations (Alembic)
-
-Schema is managed by Alembic — **do not use** `Base.metadata.create_all()`.
+## Local preview (optional)
 
 ```bash
-# Apply all pending migrations (run this on deploy)
-alembic upgrade head
-
-# After editing app/models.py — generate a new migration
-alembic revision --autogenerate -m "add prep_time to recipes"
-# Review the generated file in alembic/versions/, then:
-alembic upgrade head
-
-# Inspect state
-alembic current    # current revision
-alembic history    # full migration history
+bundle install
+bundle exec jekyll serve
+# open http://localhost:4000
 ```
 
-The DB URL comes from `settings.DATABASE_URL` in `env.py` — `alembic.ini` does not set it.
+## GitHub Pages setup
 
-## Architecture
+Settings > Pages > Source: Deploy from branch `main` / `/ (root)`
 
-- `app/main.py` — App entry point: mounts `/static`, registers routers (DB schema managed by Alembic, not create_all)
-- `app/config.py` — Settings via pydantic-settings, loaded from `.env`
-- `app/models.py` — `User` and `Recipe` SQLAlchemy models
-- `app/auth.py` — bcrypt password hashing + JWT creation/decoding
-- `app/routers/auth.py` — `/login` (GET/POST) and `/logout`
-- `app/routers/recipes.py` — Recipe CRUD; auth check via `get_current_user()` helper that returns `None` and triggers redirect instead of raising 401
-- `app/templates/` — Jinja2 templates, all extend `base.html`
-- `app/static/css/style.css` — All styles
+The repo must be **public** for GitHub Pages on a free GitHub account.
 
-## Key details
+## Structure
 
-- Auth: JWT stored in an `httponly` cookie named `access_token`; no server-side session
-- All routes redirect to `/login` when unauthenticated (no 401 JSON responses)
-- IP whitelisting is planned but not yet implemented
+- `_config.yml` — Jekyll configuration, collection definition
+- `_layouts/default.html` — base HTML layout
+- `_layouts/recipe.html` — individual recipe page layout
+- `_includes/nav.html` — shared nav
+- `index.md` — home page (recipe list)
+- `recipes/*.md` — one file per recipe
+- `assets/css/style.css` — all styles
+- `assets/images/recipes/<slug>/` — recipe photos

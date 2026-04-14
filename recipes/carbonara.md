@@ -1,14 +1,20 @@
-Title: Spaghetti Carbonara
-Description: Classic Roman pasta with eggs, pecorino and guanciale
+---
+title: Spaghetti Carbonara
+description: Classic Roman pasta with eggs, pecorino and guanciale
+author: Baru
+date: 2026-04-14
+---
 
-Ingredients:
-400g spaghetti
-150g guanciale (or pancetta)
-4 egg yolks
-100g pecorino romano, grated
-Black pepper
+## Ingredients
 
-Instructions:
+- 400g spaghetti
+- 150g guanciale (or pancetta)
+- 4 egg yolks
+- 100g pecorino romano, grated
+- Black pepper
+
+## Instructions
+
 1. Bring a large pot of salted water to boil and cook the spaghetti until al dente.
 2. Fry the guanciale in a pan over medium heat until crispy. Remove from heat.
 3. Mix egg yolks with grated pecorino and a generous amount of black pepper.

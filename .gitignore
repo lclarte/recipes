@@ -1,20 +1,11 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
+_site/
+.sass-cache/
+.jekyll-metadata
+.jekyll-cache/
+.bundle/
+vendor/
+Gemfile.lock
+.env
+.DS_Store
 .venv/
 venv/
-
-# Environment
-.env
-
-# Database
-*.db
-*.db-shm
-*.db-wal
-
-# Uploads
-app/static/uploads/
-
-# OS
-.DS_Store
