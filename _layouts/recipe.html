@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<p><a href="{{ '/recipes/' | relative_url }}">← All recipes</a></p>
+<h1>{{ page.title }}</h1>
+<p class="meta">by {{ page.author }} · {{ page.date | date: "%B %-d, %Y" }}</p>
+
+{% if page.description %}
+<p class="description">{{ page.description }}</p>
+{% endif %}
+
+{% if page.images %}
+<div class="recipe-images">
+  {% for img in page.images %}
+  <img src="{{ '/assets/images/recipes/' | append: page.name | append: '/' | append: img | relative_url }}"
+       alt="{{ page.title }}">
+  {% endfor %}
+</div>
+{% endif %}
+
+{{ content }}

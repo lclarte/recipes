@@ -1,0 +1,21 @@
+title: Recipes
+
+collections:
+  recipes:
+    output: true
+    permalink: /recipes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: recipes
+    values:
+      layout: recipe
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - CLAUDE.md
+
+markdown: kramdown

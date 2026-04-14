@@ -4,6 +4,7 @@ _site/
 .jekyll-cache/
 .bundle/
 vendor/
+Gemfile
 Gemfile.lock
 .env
 .DS_Store
