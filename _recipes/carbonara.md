@@ -1,8 +1,9 @@
 ---
 title: Spaghetti Carbonara
 description: Classic Roman pasta with eggs, pecorino and guanciale
-author: Baru
+author: Lucas
 date: 2026-04-14
+tags: [test, pasta]
 ---
 
 ## Ingredients

@@ -50,6 +50,32 @@ main ul, main ol {
 }
 main li { margin-bottom: 0.3rem; }
 
+/* Tags */
+.tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: #3b5bdb;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.3rem;
+}
+.recipe-tags { margin: 0.5rem 0 1rem; }
+
+/* Tag filter buttons */
+.tag-filters { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #555;
+}
+.tag-btn:hover { border-color: #3b5bdb; color: #3b5bdb; }
+.tag-btn.active { background: #3b5bdb; border-color: #3b5bdb; color: #fff; }
+
 /* Images */
 .recipe-images {
   display: flex;
