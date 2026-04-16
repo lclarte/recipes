@@ -8,5 +8,6 @@ tags: [crockpot, beef]
 
 ## Ingredients
 
+![beef](beef.jpeg)
 
 ## Instructions
