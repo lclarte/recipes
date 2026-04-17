@@ -18,8 +18,8 @@ layout: default
 {% if page.images %}
 <div class="recipe-images">
   {% for img in page.images %}
-  <img src="{{ '/assets/images/recipes/' | append: page.name | append: '/' | append: img | relative_url }}"
-       alt="{{ page.title }}">
+  {% capture img_src %}/assets/images/recipes/{{ page.slug }}/{{ img }}{% endcapture %}
+  <img src="{{ img_src | relative_url }}" alt="{{ page.title }}">
   {% endfor %}
 </div>
 {% endif %}
